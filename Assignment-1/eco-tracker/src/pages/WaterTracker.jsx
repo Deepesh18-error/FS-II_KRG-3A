@@ -4,27 +4,21 @@ import CounterDisplay from "../components/CounterDisplay";
 function WaterTracker() {
   const [count, setCount] = useState(0);
   const [goal, setGoal] = useState(8);
-  const [tip, setTip] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
+  // Load previous value on refresh
   useEffect(() => {
     const savedCount = localStorage.getItem("waterCount");
     if (savedCount) setCount(Number(savedCount));
-
-
   }, []);
 
+  // Save count in localStorage
   useEffect(() => {
     localStorage.setItem("waterCount", count);
-
-
   }, [count]);
 
+  // Optimized functions using useCallback
   const addWater = useCallback(() => {
     setCount(prev => prev + 1);
-
-    
   }, []);
 
   const removeWater = useCallback(() => {
@@ -33,59 +27,38 @@ function WaterTracker() {
 
   const reset = () => setCount(0);
 
-  const fetchTip = async () => {
-    setLoading(true);
-    setError("");
-    try {
-      const res = await fetch("https://api.adviceslip.com/advice");
-      const data = await res.json();
-      setTip(data.slip.advice);
-    } catch {
-      setError("Failed to fetch advice.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="flex justify-center mt-10">
-      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md space-y-4">
-        <h2 className="text-2xl font-bold text-center">Water Intake Tracker</h2>
+      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md border">
+        <h2 className="text-2xl font-bold text-center mb-6">Water Tracker</h2>
 
-        <CounterDisplay count={count} goal={goal} />
-
-        <div className="flex justify-center space-x-4">
-          <button onClick={addWater} className="bg-primary text-white px-4 py-2 rounded-lg">+</button>
-         
-          <button onClick={removeWater} className="bg-gray-300 px-4 py-2 rounded-lg">-</button>
-          <button onClick={reset} className="bg-red-400 text-white px-4 py-2 rounded-lg">Reset</button>
+        <div className="text-center mb-6">
+          <CounterDisplay count={count} goal={goal} />
+          {count >= goal && (
+            <p className="text-green-600 font-bold mt-2">Goal Reached 🎉</p>
+          )}
         </div>
 
-        {count >= goal && <p className="text-green-600 font-semibold text-center">Goal Reached 🎉</p>}
+        <div className="flex justify-center space-x-4 mb-8">
+          <button onClick={addWater} className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
+            + Add
+          </button>
+          <button onClick={removeWater} className="bg-gray-200 px-6 py-2 rounded-lg hover:bg-gray-300">
+            - Remove
+          </button>
+          <button onClick={reset} className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600">
+            Reset
+          </button>
+        </div>
 
-        <div>
-          <label className="block mb-1 font-medium">Set Daily Goal</label>
+        <div className="border-t pt-4">
+          <label className="block mb-2 font-medium">Daily Goal (glasses)</label>
           <input
             type="number"
             value={goal}
-
             onChange={(e) => setGoal(Number(e.target.value))}
             className="w-full border p-2 rounded-lg"
           />
-        </div>
-
-        <div className="text-center"
-        
-        >
-
-          <button onClick={fetchTip} className="bg-primary text-white px-6 py-2 rounded-xl">
-            Get Health Tip
-          </button>
-
-
-          {loading&&<p className="mt-2">Loading...</p>}
-          {error      && <p className="mt-2 text-red-500">{error}</p>}
-          {tip     && <p className="mt-2 text-gray-700">Today's Health Tip: {tip}</p>}
         </div>
       </div>
     </div>

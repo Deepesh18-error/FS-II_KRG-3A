@@ -4,19 +4,18 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    
-    
     localStorage.setItem("token", "fake-jwt-token");
     navigate("/dashboard");
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="bg-white p-8 rounded-2xl shadow-lg text-center">
-        <h2 className="text-2xl font-bold mb-4">Login</h2>
-        
-        
-        <button onClick={handleLogin} className="bg-primary text-white px-6 py-2 rounded-xl">
+    <div className="flex items-center justify-center h-screen bg-gray-50">
+      <div className="bg-white p-8 rounded-xl shadow-lg text-center border">
+        <h2 className="text-2xl font-bold mb-6">EcoTrack Login</h2>
+        <button 
+          onClick={handleLogin} 
+          className="bg-blue-500 text-white px-10 py-3 rounded-xl font-semibold"
+        >
           Login
         </button>
       </div>
