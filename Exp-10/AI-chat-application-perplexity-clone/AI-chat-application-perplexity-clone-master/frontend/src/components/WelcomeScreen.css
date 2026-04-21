@@ -1,0 +1,487 @@
+/* 
+   GLOBAL LAYOUT & BACKGROUND
+    */
+
+.welcome-container {
+    position: absolute;
+    inset: 0;
+    background-color: #141414;
+    overflow: hidden;
+    z-index: 100;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* 
+   ARGON CORE CONTAINER
+    */
+
+.argon-core {
+    position: relative; 
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.argon-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 10vh 50px;
+    padding-top: 5vh;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.landing-interactive-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.landing-header,
+.landing-prompt-form,
+.example-prompts-landing {
+    pointer-events: auto;
+}
+
+.landing-header {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+/* 
+   SECTION 1 – HEADER
+    */
+
+.landing-header {
+    text-align: center;
+}
+
+.landing-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    
+    /* Premium glow effect matching star theme */
+    text-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.15),
+        0 0 40px rgba(255, 255, 255, 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.5);
+    
+    /* Subtle letter spacing for elegance */
+    letter-spacing: 2px;
+    
+    /* Smooth transition for any future hover effects */
+    transition: all 0.3s ease;
+}
+
+
+.tagline {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: #e8e8e8; /* Slightly brighter than before */
+    margin-bottom: 30px;
+    text-align: center;
+    
+    /* Subtle text shadow for depth */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.keywords {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+    justify-content: center;
+    flex-wrap: wrap; /* Responsive: wrap on smaller screens */
+}
+
+.keyword-item {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #b8b8b8; /* Brighter default text */
+    
+    /* Stronger border and background */
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Was 0.2, now 0.25 */
+    background-color: rgba(255, 255, 255, 0.08); /* Was 0.05, now 0.08 */
+    
+    padding: 8px 16px; /* Slightly more padding */
+    border-radius: 8px;
+    
+    /* Smooth transitions */
+    transition: all 0.3s ease;
+    
+    /* Subtle inner glow */
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+.keyword-item:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5); /* Was 0.7, toned down slightly */
+    background-color: rgba(255, 255, 255, 0.12);
+    
+    /* Star-inspired glow on hover */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 0 12px rgba(255, 255, 255, 0.15),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    
+    /* Subtle lift effect */
+    transform: translateY(-1px);
+}
+/* 
+   SECTION 2 – SEARCH FORM
+    */
+
+.landing-prompt-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 700px;
+    background-color: #1e1e1e;
+    
+    /* Stronger default border */
+    border: 2px solid #333333; /* Was #2a2a2a, now brighter */
+    border-radius: 20px; 
+    padding: 16px 20px 12px 20px;
+    
+    /* Smooth transitions */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    margin-bottom: 80px;
+    
+    /* Subtle depth */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.landing-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #f0f0f0; /* Brighter text */
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    height: 30px;
+    margin-bottom: 16px;
+    min-height: 40px;
+    resize: none;
+}
+
+
+.landing-prompt-form:focus-within {
+    /* Stronger focus glow with blue tint */
+    border-color: #6a737e; /* Blue accent */
+    background-color: #222222; /* Slightly lighter on focus */
+    box-shadow: 
+        0 0 20px rgba(97, 121, 148, 0.2),
+        0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+
+.landing-input:focus {
+    outline: none;
+}
+
+.landing-input::placeholder {
+    color: #999;
+}
+
+.landing-submit-btn {
+    background-color: rgb(39, 108, 135);
+    color: white;
+    border: 1px solid #3a3a3a;
+    padding: 10px 22px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.landing-submit-btn:hover {
+    background-color: #383838;
+}
+
+.landing-submit-btn:disabled {
+    background-color: #222;
+    color: #555;
+    cursor: not-allowed;
+}
+
+.landing-actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.landing-actions-left,
+.landing-actions-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-btn {
+    background-color: #2a2a2a; /* Slightly lighter default */
+    color: #a0a0a0; /* Brighter icon color */
+    border: 1px solid #3f3f3f; /* Stronger border */
+    border-radius: 12px;
+    font-size: 20px; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    width: 36px;
+    height: 36px;
+    
+    /* Subtle shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn {
+    background-color: #4a90e2; /* Professional blue instead of generic */
+    color: white;
+    border: none;
+    padding: 10px 24px; /* Slightly wider padding */
+    border-radius: 10px; /* Slightly more rounded */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600; /* Bolder */
+    transition: all 0.25s ease;
+    
+    /* Subtle shadow */
+    box-shadow: 0 1px 1px rgba(137, 146, 157, 0.3);
+}
+
+.submit-btn:hover { 
+    background-color: blueviolet; 
+}
+
+.submit-btn:disabled { 
+    background-color: #2a2a2a; 
+    color: #666; /* Slightly brighter disabled text */
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.action-btn:hover {
+    background-color: #3a3a3a; 
+    color: #ffffff; /* Pure white on hover */
+    border-color: #5a5a5a;
+    
+    /* Subtle lift */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.landing-prompt-form .web-search-toggle.active {
+    background-color: #326fb5; /* Professional blue */
+    color: white;             
+    border-color: #5a9ff5;
+    box-shadow: 0 0 12px rgba(74, 144, 226, 0.4);
+}
+
+.landing-prompt-form .mic-button.active {
+    background-color: #dc2626;
+    color: white;
+    border-color: #f87171;
+    animation: pulse-red 1.5s infinite;
+}
+
+
+/* 
+   SECTION 3 – EXAMPLE PROMPTS
+    */
+
+.example-prompts-landing {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 150px;
+    padding-bottom: 2vh;
+    flex-wrap: wrap; /* Responsive */
+}
+
+
+.example-prompts-landing button {
+    /* Stronger default state */
+    background: rgba(255, 255, 255, 0.04); /* Was transparent */
+    border: 1px solid rgba(255, 255, 255, 0.28); /* Was 0.2, now stronger */
+    color: #c0c0c0; /* Brighter text */
+    
+    padding: 12px 20px; /* More padding for better click target */
+    border-radius: 10px; /* More rounded for modern feel */
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    
+    /* Smooth transitions */
+    transition: all 0.3s ease;
+    
+    /* Subtle shadow for depth */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.example-prompts-landing button:hover {
+    background-color: rgba(255, 255, 255, 0.12); /* Was 0.1 */
+    border-color: rgba(255, 255, 255, 0.45); /* Was 0.4 */
+    color: #ffffff;
+    
+    /* Star-inspired glow */
+    box-shadow: 
+        0 0 12px rgba(255, 255, 255, 0.15),
+        0 4px 8px rgba(0, 0, 0, 0.3);
+    
+    /* Subtle scale for interactive feel */
+    transform: translateY(-2px) scale(1.02);
+}
+
+
+/* 
+   STAR FIELD SYSTEM - GROKIPEDIA STYLE (+ SHAPED STARS)
+   REPLACE ENTIRE STAR SECTION WITH THIS
+    */
+
+/* Star field container */
+.star-field-container {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Base star container (+ shape made from two bars) */
+.star-plus {
+    position: absolute;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    
+    /* Use CSS variables for dynamic sizing */
+    width: var(--base-size, 2px);
+    height: var(--base-size, 2px);
+    
+    /* Apply the glow/pulse animation */
+    animation: starGlowPulse var(--animation-duration, 5s) ease-in-out infinite;
+    animation-delay: var(--animation-delay, 0s);
+}
+
+/* Horizontal bar of the + sign */
+.star-plus-horizontal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 20%; /* Thickness of the bar */
+    background: white;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Vertical bar of the + sign */
+.star-plus-vertical {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%; /* Thickness of the bar */
+    height: 100%;
+    background: white;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+/* THE KEY ANIMATION: Size grows + glow intensifies, then shrinks + fades */
+@keyframes starGlowPulse {
+    0% {
+        /* Start: Small size, very dim */
+        width: var(--base-size, 2px);
+        height: var(--base-size, 2px);
+        opacity: 0.15;
+        filter: brightness(0.6) blur(0px);
+    }
+    
+    15% {
+        /* Gentle fade in */
+        opacity: 0.3;
+        filter: brightness(0.8) blur(0px);
+    }
+    
+    50% {
+        /* Peak glow: Maximum size, bright, glowing */
+        width: var(--glow-size, 4px);
+        height: var(--glow-size, 4px);
+        opacity: 1;
+        filter: brightness(1.5) blur(0.3px) drop-shadow(0 0 3px rgba(255, 255, 255, 0.9));
+    }
+    
+    85% {
+        /* Gentle fade out */
+        opacity: 0.3;
+        filter: brightness(0.8) blur(0px);
+    }
+    
+    100% {
+        /* End: Back to small size, very dim */
+        width: var(--base-size, 2px);
+        height: var(--base-size, 2px);
+        opacity: 0.15;
+        filter: brightness(0.6) blur(0px);
+    }
+}
+
+/* Ensure welcome container has deep space background */
+.welcome-container {
+    position: absolute;
+    inset: 0;
+    background: #141414;
+    overflow: hidden;
+    z-index: 100;
+}
+
+/* Ensure argon-core content sits above stars */
+.argon-core {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.argon-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 10vh 50px;
+    padding-top: 5vh;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+/* Performance optimization: Use GPU acceleration */
+.star-plus,
+.star-plus-horizontal,
+.star-plus-vertical {
+    will-change: transform, opacity, filter;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
